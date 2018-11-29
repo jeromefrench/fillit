@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 16:31:21 by jchardin          #+#    #+#             */
-/*   Updated: 2018/11/29 14:11:44 by jchardin         ###   ########.fr       */
+/*   Created: 2018/11/27 09:16:24 by jchardin          #+#    #+#             */
+/*   Updated: 2018/11/29 09:43:47 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strncmp(const char *s1, const char *s2, int n)
+#include "libft.h"
+
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int				i;
-	unsigned char	*ss1;
-	unsigned char	*ss2;
+	int		i;
 
 	i = 0;
-	ss1 = (unsigned char*)s1;
-	ss2 = (unsigned char*)s2;
-	while (ss1[i] != 0 && ss2[i] == ss1[i] && i < n)
+	while (i < len)
+	{
+		((char*)dst)[i] = ((char*)src)[i];
 		i++;
-	return (ss1[i] - ss2[i]);
-}
+	}
+	return (dst); }

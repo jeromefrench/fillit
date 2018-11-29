@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 16:31:21 by jchardin          #+#    #+#             */
-/*   Updated: 2018/11/29 14:11:44 by jchardin         ###   ########.fr       */
+/*   Created: 2018/11/28 08:09:21 by jchardin          #+#    #+#             */
+/*   Updated: 2018/11/29 14:33:57 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strncmp(const char *s1, const char *s2, int n)
+
+int		ft_atoi(const char *str)
 {
-	int				i;
-	unsigned char	*ss1;
-	unsigned char	*ss2;
+	int		i;
+	int		nb;
+	int		nega;
 
 	i = 0;
-	ss1 = (unsigned char*)s1;
-	ss2 = (unsigned char*)s2;
-	while (ss1[i] != 0 && ss2[i] == ss1[i] && i < n)
+	nega = 1;
+	nb = 0;
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == ' ')
 		i++;
-	return (ss1[i] - ss2[i]);
+	if (str[i] == '-')
+	{
+		nega = -1;
+		i++;
+	}
+	while (str[i] != '\0')
+	{
+		nb = nb * 10 + str[i] - '0';
+		i++;
+	}
+	return (nb * nega);
 }

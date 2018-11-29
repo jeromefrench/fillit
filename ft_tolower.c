@@ -6,16 +6,16 @@
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 14:46:44 by jchardin          #+#    #+#             */
-/*   Updated: 2018/11/26 15:13:49 by jchardin         ###   ########.fr       */
+/*   Updated: 2018/11/26 18:15:27 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_tolower(int c)
 {
-		int		up;
+	int		up;
 
-		up = c;
-		if (c <= 'Z' && c >= 'A')
-			up = c + 32;
-		return (up);
+	up = c;
+	if (c <= 'Z' && c >= 'A')
+		up = c + 32;
+	return (up);
 }

@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 16:31:21 by jchardin          #+#    #+#             */
-/*   Updated: 2018/11/29 14:11:44 by jchardin         ###   ########.fr       */
+/*   Created: 2018/11/27 09:16:26 by jchardin          #+#    #+#             */
+/*   Updated: 2018/11/29 09:25:13 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strncmp(const char *s1, const char *s2, int n)
+#include "libft.h"
+
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
 	int				i;
-	unsigned char	*ss1;
-	unsigned char	*ss2;
+	unsigned char	*pdst;
 
+	pdst = dst;
 	i = 0;
-	ss1 = (unsigned char*)s1;
-	ss2 = (unsigned char*)s2;
-	while (ss1[i] != 0 && ss2[i] == ss1[i] && i < n)
+	while (i < n)
+	{
+		((char*)dst)[i] = ((char*)src)[i];
+		if (pdst[i] == (unsigned char)c)
+			return (&dst[i + 1]);
 		i++;
-	return (ss1[i] - ss2[i]);
+	}
+	return (NULL);
 }

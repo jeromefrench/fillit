@@ -6,13 +6,13 @@
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 15:31:01 by jchardin          #+#    #+#             */
-/*   Updated: 2018/11/26 15:44:40 by jchardin         ###   ########.fr       */
+/*   Updated: 2018/11/29 15:12:20 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_isascii(int c)
 {
-		if (c <= 177 && c >= 0)
-				return (1);
-		return (0);
+	if (c <= 127 && c >= 0)
+		return (1);
+	return (0);
 }

@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 16:31:21 by jchardin          #+#    #+#             */
-/*   Updated: 2018/11/29 14:11:44 by jchardin         ###   ########.fr       */
+/*   Created: 2018/11/27 15:45:04 by jchardin          #+#    #+#             */
+/*   Updated: 2018/11/29 16:52:29 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strncmp(const char *s1, const char *s2, int n)
-{
-	int				i;
-	unsigned char	*ss1;
-	unsigned char	*ss2;
+//gere le max min
 
-	i = 0;
-	ss1 = (unsigned char*)s1;
-	ss2 = (unsigned char*)s2;
-	while (ss1[i] != 0 && ss2[i] == ss1[i] && i < n)
-		i++;
-	return (ss1[i] - ss2[i]);
+#include "libft.h"
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	if(n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n = n * -1;
+	}
+	if(n >= 10)
+	{
+		ft_putnbr_fd(n / 10, fd);
+	}
+	ft_putchar_fd( (n % 10) + '0', fd);
 }

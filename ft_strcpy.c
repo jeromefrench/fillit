@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/26 16:31:21 by jchardin          #+#    #+#             */
-/*   Updated: 2018/11/29 14:11:44 by jchardin         ###   ########.fr       */
+/*   Created: 2018/11/27 06:49:57 by jchardin          #+#    #+#             */
+/*   Updated: 2018/11/29 08:33:44 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strncmp(const char *s1, const char *s2, int n)
+char	*ft_strcpy(char *dst, const char *src)
 {
-	int				i;
-	unsigned char	*ss1;
-	unsigned char	*ss2;
+	int		i;
 
 	i = 0;
-	ss1 = (unsigned char*)s1;
-	ss2 = (unsigned char*)s2;
-	while (ss1[i] != 0 && ss2[i] == ss1[i] && i < n)
+	while (src[i] != '\0')
+	{
+		dst[i] = src[i];
 		i++;
-	return (ss1[i] - ss2[i]);
+	}
+	dst[i] = '\0';
+	return (dst);
 }

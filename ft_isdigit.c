@@ -6,13 +6,13 @@
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 15:31:01 by jchardin          #+#    #+#             */
-/*   Updated: 2018/11/26 16:05:29 by jchardin         ###   ########.fr       */
+/*   Updated: 2018/11/26 18:10:20 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_isdigit(int c)
 {
-		if (c <= '9' && c >= '0')
-				return (1);
-		return (0);
+	if (c <= '9' && c >= '0')
+		return (1);
+	return (0);
 }
