@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 08:24:37 by jchardin          #+#    #+#             */
-/*   Updated: 2018/11/28 08:45:10 by jchardin         ###   ########.fr       */
+/*   Updated: 2018/11/30 07:44:35 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
 	int		i;
 
+	if (s == 0)
+		return ;
 	i = 0;
 	while (s[i] != '\0')
 	{

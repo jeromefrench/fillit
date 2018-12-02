@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 08:52:01 by jchardin          #+#    #+#             */
-/*   Updated: 2018/11/29 16:10:54 by jchardin         ###   ########.fr       */
+/*   Updated: 2018/11/30 07:46:23 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	int		j;
 	char	*str;
 
+	if (s == 0)
+		return (NULL);
 	i = 0;
 	j = 0;
 	while (s[i] != '\0')

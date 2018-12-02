@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 16:51:57 by jchardin          #+#    #+#             */
-/*   Updated: 2018/11/28 18:03:09 by jchardin         ###   ########.fr       */
+/*   Updated: 2018/11/30 10:30:39 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	ft_memdel(void **ap)
 {
-	if (*ap == NULL || ap == NULL)
-		return ;
-	free(*ap);
-	ap = NULL;
+	if (ap != 0)
+	{
+		free(*ap);
+		*ap = NULL;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 15:59:56 by jchardin          #+#    #+#             */
-/*   Updated: 2018/11/29 16:07:17 by jchardin         ###   ########.fr       */
+/*   Updated: 2018/11/30 07:43:51 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@ void	ft_striter(char *s, void (*f)(char *))
 {
 	int		i;
 
+	if (s == 0)
+		return ;
 	i = 0;
 	while (s[i] != '\0')
 	{

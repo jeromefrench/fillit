@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 10:33:26 by jchardin          #+#    #+#             */
-/*   Updated: 2018/11/29 16:27:22 by jchardin         ###   ########.fr       */
+/*   Updated: 2018/11/30 07:54:06 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		j;
 	char	*str;
 
+	if (s1 == 0 || s2 == 0)
+		return (NULL);
 	i = 0;
 	j = 0;
 	while (s1[i] != '\0')

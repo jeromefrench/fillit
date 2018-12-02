@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/26 13:19:14 by jchardin          #+#    #+#             */
-/*   Updated: 2018/11/29 13:42:59 by jchardin         ###   ########.fr       */
+/*   Updated: 2018/12/02 17:20:31 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,35 +15,45 @@
 #include "libft.h"
 #include "fcntl.h"
 
-
 void masuper_fonction(unsigned int index, char *str);
 char	maseconde_super(char c);
 char	supersuper_f(unsigned int index, char c);
 
 int		main(void)
 {
+	printf("slt1\n");
 
+
+printf("La fonction lst_new\n");
+char *data = "hello I'm the data";
+t_list *l = ft_lstnew(data, ft_strlen(data) + 1);
+printf("la data =%s\n", l->content);
+
+
+
+//printf("Le nombre =%s\n", ft_itoa(0));
 
 /*
 printf("La fonction strlcat\n");
 char	dst_lcat[50];
 char	src_lcat[50];
-ft_strcpy(dst_lcat, "salut");
-ft_strcpy(src_lcat, "manu");
-int b =ft_strlcat(dst_lcat, src_lcat, 30);
+ft_strcpy(dst_lcat, "aaa");
+ft_strcpy(src_lcat, "bbbb");
+int b =ft_strlcat(dst_lcat, src_lcat, 0);
 printf("La strlca =%s\n", dst_lcat);
 printf("%d\n", b);
 
-printf("La fonction strlcat\n");
+printf("\n\n\n");
+
+printf("La fonction strlcat officiel\n");
 char	tdst_lcat[50];
 char	tsrc_lcat[50];
-ft_strcpy(tdst_lcat, "salut");
-ft_strcpy(tsrc_lcat, "manu");
-int a = strlcat(tdst_lcat, tsrc_lcat, 30);
+ft_strcpy(tdst_lcat, "aaa");
+ft_strcpy(tsrc_lcat, "bbbb");
+int a = strlcat(tdst_lcat, tsrc_lcat, 0);
 printf("La strlca =%s\n", tdst_lcat);
 printf("%d\n", a);
 */
-
 
 
 /*
@@ -96,12 +106,10 @@ printf("%d\n", a);
 		char	str1[50];
 		char	str2[50];
 
-		strcpy(str1, "je suis la chaine une");
-		strcpy(str2, "je suis la chaine a  une");
-		printf("La dif :%d\n", ft_strcmp(str1, str2));
-		printf("La dif :%d\n", strcmp(str1, str2));
-		printf("La dif :%d\n", ft_strncmp(str1, str2, 3));
-		printf("La dif :%d\n", strncmp(str1, str2, 3));
+		strcpy(str1, "abcdefgh");
+		strcpy(str2, "abcdwxyz");
+		printf("La dif :%d\n", ft_strncmp(str1, str2, 4));
+		printf("La dif :%d\n", strncmp(str1, str2, 4));
 */
 
 /*
@@ -171,7 +179,6 @@ printf("%d\n", a);
 	ft_putstr(mem_cpy1);
 */
 
-
 /*
 	printf("La fonction memccpy\n");
 	char mem_ccpy1[50];
@@ -181,15 +188,29 @@ printf("%d\n", a);
 	ft_memcpy(mem_ccpy1, mem_ccpy2, 2);
 	ft_putstr(mem_ccpy1);
 */
+/*
+		printf("slt\n");
+		char	str1[] = "123456789";
+		char	str11[] = "123456789";
+		char	str2[] = "Quiz";
+		char	str22[] = "Quiz";
+		ft_memmove(&str1[3], &str1[3] + 2, 4);
+		memmove(&str11[3], &str11[3] + 2, 4);
+		printf("=%s\n", &str1[3]);
+		printf("=%s\n", &str11[3]);
+		printf("slt\n");
+*/
 
 /*
 	printf("La fonction memmove\n");
 	char mem_move1[50];
 	char mem_move2[50];
-	ft_strcpy(mem_move1, "abcdefg");
-	ft_strcpy(mem_move2, "12345");
-	ft_memmove(mem_move1 + 2, mem_move1, 5);
-	ft_putstr(mem_move1);
+	ft_strcpy(mem_move1, "abcdefghij");
+	ft_strcpy(mem_move2, "abcdefghij");
+	ft_memmove(mem_move1, mem_move1 + 2, 20);
+	memmove(mem_move2, mem_move2 + 2, 20);
+	printf("%s\n", mem_move1);
+	printf("%s\n", mem_move1);
 */
 
 /*
@@ -202,15 +223,16 @@ printf("%d\n", a);
 	ft_putstr(ret);
 */
 
-
 /*
 	printf("La fonction strrchr\n");
 	char	str_rchr[50];
-	ft_strcpy(str_rchr, "aller .la .bich.on");
+	ft_strcpy(str_rchr, ".");
 	char	*ret;
 	char	c = '.';
+	ret = ft_strrchr(str_rchr, c);
+	printf("La chaine =%s\n", ret);
 	ret = strrchr(str_rchr, c);
-	ft_putstr(ret);
+	printf("La chaine =%s\n", ret);
 */
 
 //	printf("La fonction strstr\n");
@@ -230,7 +252,7 @@ ft_putstr_fd("ma super phrase", fd);
 ft_putnbr_fd(1789, fd);
 */
 
-//	printf("res de atoi=%d", ft_atoi("-3564"));
+	//printf("res de atoi=%d", ft_atoi(" "));
 
 /*
 printf("fonction stiteri\n");
@@ -239,7 +261,6 @@ ft_strcpy(str_striteri, "abcdef");
 ft_striteri(str_striteri, &masuper_fonction);
 printf("%s\n", str_striteri);
 */
-
 
 /*
 printf("Fonction strmap\n");
@@ -271,22 +292,19 @@ printf("La fonction strjoin\n");
 //ft_strjoin(str_join1, str_join2);
 printf("la concat =%s\n", ft_strjoin(str_join1, str_join2));
 */
-
 /*
 printf("La fonction strtrim\n");
 char	str_strtrim[50];
-ft_strcpy(str_strtrim, "      aller les jaunes             ");
+ft_strcpy(str_strtrim, "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !");
 //ft_strtrim(str_strtrim);
 printf("La chaine=%s\n", ft_strtrim(str_strtrim));
 */
-
-
 /*
 printf("La fonction strsplit\n");
-char	split[50];
-ft_strcpy(split,"salut*les***etudiants********");
+char	split[200];
+ft_strcpy(split, "");
 char	**str_split;
-str_split = ft_strsplit(split, '*');
+str_split = ft_strsplit(NULL, 0);
 int		i;
 i = 0;
 while (str_split[i] != 0)
@@ -294,7 +312,12 @@ while (str_split[i] != 0)
 printf("%s\n", str_split[i]);
 i++;
 }
+printf("slt2\n");
+//printf("%s\n", str_split[0]);
+//printf("%s\n", str_split[1]);
+//printf("%s\n", str_split[2]);
 */
+
 
 //printf("Fonction memalloc");
 //ft_memalloc(32);
@@ -309,6 +332,7 @@ i++;
 void masuper_fonction(unsigned int index, char *c)
 {
 	*c = *c + 1;
+	(void)index;
 }
 
 char	maseconde_super(char c)
@@ -318,6 +342,7 @@ char	maseconde_super(char c)
 
 char	supersuper_f(unsigned int index, char c)
 {
+	(void)index;
 	return (c = c + 1);
 }
 

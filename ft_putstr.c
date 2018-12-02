@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 06:41:36 by jchardin          #+#    #+#             */
-/*   Updated: 2018/11/28 17:54:13 by jchardin         ###   ########.fr       */
+/*   Updated: 2018/11/30 09:15:07 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_putstr(char const *s)
 {
 	int		i;
 
+	if (s == 0)
+		return ;
 	i = 0;
 	while (s[i] != '\0')
 	{

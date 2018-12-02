@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 09:16:28 by jchardin          #+#    #+#             */
-/*   Updated: 2018/11/29 09:02:35 by jchardin         ###   ########.fr       */
+/*   Updated: 2018/12/01 10:55:06 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	int		i;
 
 	i = 0;
-	while (i < n)
+	while (i < (int)n)
 	{
 		((char*)dst)[i] = ((char*)src)[i];
 		i++;
