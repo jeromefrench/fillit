@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/02 16:12:46 by jchardin          #+#    #+#             */
-/*   Updated: 2018/12/03 12:02:33 by jchardin         ###   ########.fr       */
+/*   Created: 2018/12/03 12:21:17 by jchardin          #+#    #+#             */
+/*   Updated: 2018/12/03 14:40:30 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd(t_list **alst, t_list *new)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	if (*alst != NULL && new != NULL)
+	t_list	*new_lst;
+	t_list	*new_lst_first_node;
+	t_list	*tmp;
+
+	new_lst_first_node = NULL;
+	new_lst = NULL;
+	new_lst = f(lst);
+	new_lst_first_node = new_lst;
+	lst = lst->next;
+	while (lst != NULL)
 	{
-		new->next = *alst;
-		*alst = new;
+		tmp = new_lst;
+		new_lst = f(lst);
+		tmp->next = new_lst;
+		lst = lst->next;
 	}
-	if (*alst == NULL)
-	{
-		*alst = new;
-	}
+	return (new_lst_first_node);
 }

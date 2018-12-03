@@ -6,14 +6,13 @@
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 19:57:58 by jchardin          #+#    #+#             */
-/*   Updated: 2018/12/01 22:40:35 by jchardin         ###   ########.fr       */
+/*   Updated: 2018/12/03 18:30:00 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stdlib.h"
-#include <stdio.h>
 
-void	ft_split_first(char const *s, int *word, char *c)
+static void	ft_split_first(char const *s, int *word, char *c)
 {
 	int		i;
 
@@ -29,7 +28,7 @@ void	ft_split_first(char const *s, int *word, char *c)
 	}
 }
 
-void	ft_strtrim_second(const char *s, int *j, char *c, int *letter)
+static void	ft_strtrim_second(const char *s, int *j, char *c, int *letter)
 {
 	while (s[*j] == *c && s[*j] != '\0')
 		*j = *j + 1;
@@ -41,7 +40,7 @@ void	ft_strtrim_second(const char *s, int *j, char *c, int *letter)
 	}
 }
 
-int		ft_str_trim_third(int *word, const char *s, char *c, char **str)
+static int	ft_str_trim_third(int *word, const char *s, char *c, char **str)
 {
 	int		letter;
 	int		i;
@@ -70,7 +69,7 @@ int		ft_str_trim_third(int *word, const char *s, char *c, char **str)
 	return (i);
 }
 
-char	**ft_strsplit(char const *s, char c)
+char		**ft_strsplit(char const *s, char c)
 {
 	char	**str;
 	int		word;

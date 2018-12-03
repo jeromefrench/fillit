@@ -6,14 +6,13 @@
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 16:36:34 by jchardin          #+#    #+#             */
-/*   Updated: 2018/12/01 10:56:32 by jchardin         ###   ########.fr       */
+/*   Updated: 2018/12/03 18:30:37 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-void	ft_itoa_first(int *nega, int *n, int *nb, int *i)
+static void	ft_itoa_first(int *nega, int *n, int *nb, int *i)
 {
 	*nega = 1;
 	if (*n < 0)
@@ -28,7 +27,7 @@ void	ft_itoa_first(int *nega, int *n, int *nb, int *i)
 	}
 }
 
-void	ft_itoa_third(int *nb, int *i, char *str, int *nega)
+static void	ft_itoa_third(int *nb, int *i, char *str, int *nega)
 {
 	str[*i] = '\0';
 	*i = *i - 1;
@@ -42,7 +41,7 @@ void	ft_itoa_third(int *nb, int *i, char *str, int *nega)
 		str[0] = '-';
 }
 
-char	*ft_itoa_prime(int *n, char *str)
+static char	*ft_itoa_prime(int *n, char *str)
 {
 	if (*n == 0)
 	{
@@ -56,7 +55,7 @@ char	*ft_itoa_prime(int *n, char *str)
 	}
 }
 
-char	*ft_itoa(int n)
+char		*ft_itoa(int n)
 {
 	int		i;
 	int		nb;
