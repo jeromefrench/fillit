@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/28 10:56:54 by jchardin          #+#    #+#             */
-/*   Updated: 2018/12/01 11:49:31 by jchardin         ###   ########.fr       */
+/*   Updated: 2018/12/04 08:30:42 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,11 @@ char			*ft_strtrim(char const *s)
 	ft_strtrimsecond(&i, s, swap, swap2);
 	if (!(str = malloc(sizeof(char) * (i + 1))))
 		return (0);
-	i = 0;
-	while (swap2[i] != '\0')
-	{
+	i = -1;
+	while (swap2[++i] != '\0')
 		str[i] = swap2[i];
-		i++;
-	}
 	str[i] = '\0';
+	free(swap);
+	free(swap2);
 	return (str);
 }
