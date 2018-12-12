@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:00:01 by jchardin          #+#    #+#             */
-/*   Updated: 2018/12/12 15:20:17 by jchardin         ###   ########.fr       */
+/*   Updated: 2018/12/12 17:05:10 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,20 @@ int		main(void)
     if (close(fd) == -1)
         return (1);
     //------------------------------------------------------------
-    ft_putstr("CHECKING IF EACH BLOCK IS IN CONTACT WITH AN OTHER");
+    ft_putstr("test 4 CHECKING IF EACH BLOCK IS IN CONTACT WITH AN OTHER ->");
     ft_open_map(&fd);
     ft_coordonate_piece(fd, &list_piece);
-    ft_display_lst_piece(list_piece);
+    //ft_display_lst_piece(list_piece);
+    if (!(ft_check_for_contact(list_piece)))
+    {
+        ft_putstr("Error in a block not connected to an other\n");
+        return (1);
+    }
+    if (close(fd) == -1)
+        return (1);
+
+
+
 
 
     return (0);
@@ -76,7 +86,7 @@ int		ft_coordonate_piece(int fd, t_piece **list_piece)
         i = i % 4;
         if (i == 0)
         {
-            printf("\nJe fais un new node\n");
+            //printf("\nJe fais un new node\n");
             new_node = ft_lst_new_piece(new_node);
         }
         if (ft_strlen(line) > 0)
@@ -102,9 +112,9 @@ int		ft_coordonate_piece(int fd, t_piece **list_piece)
             k = 0;
             //printf("\n\n\n");
             ft_lst_add(list_piece, new_node);
-            printf("Une coordonee =%d et le next= %p\n", new_node->point[2].x, new_node->next);
-            printf("Pointeur new node= %p\n", new_node);
-            printf("L'adresse de lst= %p\n", *list_piece);
+    //    printf("Une coordonee =%d et le next= %p\n", new_node->point[2].x, new_node->next);
+    //    printf("Pointeur new node= %p\n", new_node);
+     //   printf("L'adresse de lst= %p\n", *list_piece);
         }
     }
     return (1);

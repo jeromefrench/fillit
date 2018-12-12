@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:23:17 by jchardin          #+#    #+#             */
-/*   Updated: 2018/12/12 14:20:57 by jchardin         ###   ########.fr       */
+/*   Updated: 2018/12/12 16:17:47 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ t_piece				*ft_display_coordonee(t_piece *elem);
 struct s_piece      *ft_lst_new_piece(t_piece *new_node);
 void                ft_lst_add(t_piece **lst, t_piece *new_node);
 void                ft_display_lst_piece(t_piece *lst);
+int                 ft_check_for_contact(t_piece *lst);
 
 #endif
