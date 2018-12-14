@@ -6,133 +6,147 @@
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:00:01 by jchardin          #+#    #+#             */
-/*   Updated: 2018/12/12 17:05:10 by jchardin         ###   ########.fr       */
+/*   Updated: 2018/12/14 17:02:37 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "test_tetriminos.h"
 
-int		main(void)
+static int ft_test_line_length(int *fd, char *filename)
 {
-    int		fd;
-    t_piece	*list_piece;
-
-    list_piece = NULL;
-
-    ft_putstr("CHECKING THE MAP\n\n");
-    //------------------------------------------------------------
-    ft_putstr("test1 CHECKING LINES LENGTH ->");
-    ft_open_map(&fd);
-    if (!ft_test_1(fd))
+    ft_putstr("test1 CHECKING LINES LENGTH = 4 then 0->");
+    if (!(ft_open_map(fd, filename)))
+        return (0);
+    if (!ft_test_1(*fd))
     {
         ft_putstr("Error in line length\n");
-        return (1);
+        return (0);
     }
-    if (close(fd) == -1)
-        return (1);
-    //-------------------------------------------------------------
-    ft_putstr("test2 CHECKING TETRIMINOS CONTENT 4 # -> ");
-    ft_open_map(&fd);
-    if (!(ft_test_2(fd)))
+    if (close(*fd) == -1)
+        return (0);
+    return (1);
+}
+
+static int ft_test_tetriminos_content(int *fd, char *filename)
+{
+    ft_putstr("test2 CHECKING TETRIMINOS CONTENT ONLY 4 # -> ");
+    if(!(ft_open_map(fd, filename)))
+        return(0);
+    if (!(ft_test_2(*fd)))
     {
         ft_putstr("Error in Tetriminos\n");
-        return (1);
+        return (0);
     }
-    if (close(fd) == -1)
-        return (1);
-    //-------------------------------------------------------------
+    if (close(*fd) == -1)
+        return (0);
+
+    return (1);
+}
+
+static int ft_checkind_map_content_dot_dash(int *fd, char *filename)
+{
     ft_putstr("test3 CHECKING MAP CONTENT ONLY # AND . ->");
-    ft_open_map(&fd);
-    if (!(ft_test_3(fd)))
+    if (!(ft_open_map(fd, filename)))
+        return (0);
+    if (!(ft_test_3(*fd)))
     {
         ft_putstr("Error map must content only # and .\n");
-        return (1);
+        return (0);
     }
-    if (close(fd) == -1)
-        return (1);
-    //------------------------------------------------------------
-    ft_putstr("test 4 CHECKING IF EACH BLOCK IS IN CONTACT WITH AN OTHER ->");
-    ft_open_map(&fd);
-    ft_coordonate_piece(fd, &list_piece);
-    //ft_display_lst_piece(list_piece);
-    if (!(ft_check_for_contact(list_piece)))
-    {
-        ft_putstr("Error in a block not connected to an other\n");
-        return (1);
-    }
-    if (close(fd) == -1)
-        return (1);
-
-
-
-
-
-    return (0);
+    if (close(*fd) == -1)
+        return (0);
+    return (1);
 }
+
+static int ft_check_for_valid_tetriminos(int *fd, char *filename, t_piece **list_piece)
+{
+    ft_putstr("test4 CHECKING IF EACH BLOCK IS IN CONTACT WITH AN OTHER ->");
+    if (!(ft_open_map(fd, filename)))
+        return (0);
+    ft_coordonate_piece(*fd, list_piece);
+    ft_display_lst_piece(*list_piece);
+    //if (!(ft_check_for_contact(*list_piece)))
+    //{
+        //ft_putstr("Error in a block not connected to an other\n");
+        //return (0);
+    //}
+    if (close(*fd) == -1)
+        return (0);
+    ft_putstr(" OK\n");
+    return (1);
+}
+
+int ft_test_the_map(t_piece **list_piece, char  *filename)
+{
+    int     fd;
+    *list_piece = NULL;
+
+    ft_putstr("CHECKING THE MAP\n\n");
+    if (!(ft_test_line_length(&fd, filename)))
+        return (0);
+    if (!(ft_test_tetriminos_content(&fd, filename)))
+        return (0);
+    if (!(ft_checkind_map_content_dot_dash(&fd, filename)))
+        return (0);
+    if (!(ft_check_for_valid_tetriminos(&fd, filename, list_piece)))
+        return (0);
+    return (1);
+}
+
+void    ft_coordonate_piece_decoupe(t_compteur *count, t_piece **new_node, char *line, t_piece **list_piece)
+{
+        if (count->i == 0)
+            *new_node = ft_lst_new_piece(*new_node);
+        if (ft_strlen(line) > 0)
+        {
+            count->j = 0;
+            while(line[count->j] != '\0')
+            {
+                if (line[count->j] == '#')
+                {
+                    (*new_node)->point[count->k].x = count->i;
+                    (*new_node)->point[count->k].y = count->j;
+                    count->k++;
+                }
+                count->j++;
+            }
+            count->i++;
+        }
+        if (count->k == 4)
+        {
+            count->k = 0;
+            ft_lst_add(list_piece, *new_node);
+            //printf("Une coordonee =%d et le next= %p\n", (*list_piece)->point[1].x, (*new_node)->next);
+        }
+}
+
 
 int		ft_coordonate_piece(int fd, t_piece **list_piece)
 {
     char			*line;
-    int				i;
-    int				j;
-    int				k;
+    t_compteur      *count;
     t_piece			*new_node;
 
-    i = 0;
-    k = 0;
+    count = malloc(sizeof(t_compteur));
+
+    count->i = 0;
+    count->k = 0;
     while (get_next_line(fd, &line) > 0)
     {
-
-        i = i % 4;
-        if (i == 0)
-        {
-            //printf("\nJe fais un new node\n");
-            new_node = ft_lst_new_piece(new_node);
-        }
-        if (ft_strlen(line) > 0)
-        {
-            //printf("La ligne =%s\n", line);
-            j = 0;
-            while(line[j] != '\0')
-            {
-                if (line[j] == '#')
-                {
-                    new_node->point[k].x = i;
-                    new_node->point[k].y = j;
-                    //printf("Le k =%d Le x =%d Le y =%d\n", k, i, j);
-                    k++;
-                }
-                j++;
-            }
-            i++;
-        }
-        if (k == 4)
-        {
-            //printf("Une coordonee =%d et le next= %p", new_node->point[2].x, new_node->next);
-            k = 0;
-            //printf("\n\n\n");
-            ft_lst_add(list_piece, new_node);
-    //    printf("Une coordonee =%d et le next= %p\n", new_node->point[2].x, new_node->next);
-    //    printf("Pointeur new node= %p\n", new_node);
-     //   printf("L'adresse de lst= %p\n", *list_piece);
-        }
+        count->i = count->i % 4;
+        ft_coordonate_piece_decoupe(count, &new_node, line, list_piece);
     }
     return (1);
 }
 
-void	ft_test_4(void)
+int		ft_open_map(int *fd, char *filename)
 {
-    return ;
-}
-
-int		ft_open_map(int *fd)
-{
-    if ((*fd = open("sample.fillit", O_RDONLY)) == -1)
+    if ((*fd = open(filename, O_RDONLY)) == -1)
     {
-        printf("file descriptor failure");
-        return (1);
+        ft_putstr("file descriptor failure");
+        return (0);
     }
-    return (0);
+    return (1);
 }
 
 int		ft_test_1(int fd)
@@ -162,8 +176,6 @@ int		ft_test_2(int fd)
     int		i;
     int		j;
     char	*line;
-    char	buff;
-    int		ret;
 
     j = 0;
     while (get_next_line(fd, &line))
