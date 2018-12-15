@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 12:19:22 by jchardin          #+#    #+#             */
-/*   Updated: 2018/12/14 14:13:41 by jchardin         ###   ########.fr       */
+/*   Updated: 2018/12/15 13:02:09 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ ft_try_to_put_the_pieces( piece, map)
 
 int		main(int argc, char **argv)
 {
-    t_piece     *list_piece;
-    int         toute_les_pieces_trouve;
+    t_piece		*list_piece;
+    int			toute_les_pieces_trouve;
 
     list_piece = NULL;
     if (argc != 2)
@@ -54,14 +54,8 @@ int		main(int argc, char **argv)
         ft_putstr("error\n");
         return (1);
     }
-
-
-
-
     //ft_test_tetriminos(&list_piece);
     //ft_translate_piece_to_origin(&list_piece);
-
-
     //ft_try_to_put_the_pieces();
     return (0);
 }
