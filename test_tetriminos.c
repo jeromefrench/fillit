@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:00:01 by jchardin          #+#    #+#             */
-/*   Updated: 2018/12/15 14:06:20 by jchardin         ###   ########.fr       */
+/*   Updated: 2018/12/15 16:37:47 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ char *filename, t_piece **list_piece)
 	if (close(*fd) == -1)
 		return (0);
 	ft_putstr(" OK\n");
-	ft_display_pieces(*list_piece);
 	return (1);
 }
 
@@ -105,8 +104,8 @@ t_piece **new_node, char *line, t_piece **list_piece)
 		{
 			if (line[count->j] == '#')
 			{
-				(*new_node)->point[count->k].x = count->i;
-				(*new_node)->point[count->k].y = count->j;
+				(*new_node)->point[count->k].x = count->j;
+				(*new_node)->point[count->k].y = count->i;
 				count->k++;
 			}
 			count->j++;

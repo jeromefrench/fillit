@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 11:38:57 by jchardin          #+#    #+#             */
-/*   Updated: 2018/12/15 14:06:56 by jchardin         ###   ########.fr       */
+/*   Updated: 2018/12/15 15:45:21 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_piece			*ft_lst_new_piece(t_piece *new_node)
 {
 	new_node = (t_piece*)malloc(sizeof(t_piece));
 	new_node->point = (t_point*)malloc(sizeof(t_point) * 4);
+	new_node->move = (t_point*)malloc(sizeof(t_point));
 	new_node->next = NULL;
 	return (new_node);
 }
