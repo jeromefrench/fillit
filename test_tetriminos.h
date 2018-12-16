@@ -6,7 +6,7 @@
 /*   By: jchardin <jerome.chardin@outlook.co>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:23:17 by jchardin          #+#    #+#             */
-/*   Updated: 2018/12/15 16:10:10 by jchardin         ###   ########.fr       */
+/*   Updated: 2018/12/16 19:32:34 by jchardin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct		s_point
 typedef struct		s_piece
 {
 	t_point			*point;
-	t_point			*move;
+	t_point			move;
 	struct s_piece	*next;
 }					t_piece;
 
@@ -50,5 +50,7 @@ int					ft_display_pieces(t_piece *list_piece);
 int					ft_check_for_contact(t_piece *lst);
 t_piece				*ft_display_coordonee(t_piece *elem);
 t_piece				*ft_translate_piece_origin(t_piece **list_piece);
+t_piece				*ft_x_plus_one(t_piece **list_piece, int n);
+int				ft_try_to_put_the_pieces(int size_map, t_piece **list_piece, int n);
 
 #endif
